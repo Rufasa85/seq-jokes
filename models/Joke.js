@@ -12,10 +12,6 @@ Joke.init({
     punchline: {
          type: DataTypes.STRING,
          allowNull:false
-    },
-    author:{
-        type: DataTypes.STRING,
-        allowNull:false
     }
 },{
     sequelize

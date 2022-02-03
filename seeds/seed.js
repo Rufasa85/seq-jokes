@@ -1,6 +1,5 @@
 const db = require("../config/connection.js");
-const User = require("../models/User");
-const Joke = require("../models/Joke");
+const {User,Joke,Comment} = require("../models")
 
 const start = async () => {
   await db.sync({ force: true });
@@ -22,19 +21,37 @@ const start = async () => {
     {
       setup: "What's the best undersea dessert?",
       punchline: "Flanatee",
-      author: "Joe Rehfuss"
+      UserId: 1,
     },
     {
       setup: "How do fish unlock things?",
       punchline: "With manakeys",
-      author: "Joe Rehfuss"
+      UserId: 1,
     },
     {
       setup: "Who reads mermaids the news?",
       punchline: "Anchormanatees",
-      author: "Jeo Rehfuss"
+      UserId: 3
     }
+   
   ]);
+  await Comment.bulkCreate([
+      {
+        UserId:2,
+        JokeId:2,
+        body:"very corny"
+      },
+      {
+        UserId:2,
+        JokeId:3,
+        body:"flan is gross so slimy"
+      },
+      {
+        UserId:1,
+        JokeId:2,
+        body:"this is great joke! how would a fish use keys? hahahahahahaha"
+      },
+  ])
   
   process.exit(0);
 };
